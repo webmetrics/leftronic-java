@@ -45,9 +45,10 @@ client.sendList("Test-Stream", "Fe", "Fi", "Fo", "Fum");
 client.sendText("Test-Stream", "Custom Title", "This is a new message");
 ```
 
-You can also wire up the LeftronicClient using dependency injection frameworks such as Guice. The three constructor parameters are bound to the following @Named parameter:
+You can also wire up the LeftronicClient using dependency injection frameworks such as Guice. The constructor parameters are bound to the following @Named parameters:
 
  - @Named("leftronic.accessKey")
+ - @Named("leftronic.maxThreads")
 
 Note: The client *always uses SSL* to make it's HTTP requests and until we hear a good reason we won't be offering an option to change this.
 
