@@ -28,9 +28,21 @@ Using
 The API is pretty straight forward if you've read the Leftronic API docs:
 
 ```java
-LeftronicClient client = new LeftronicClient("access_key");
+LeftronicClient client = new LeftronicClient("access_key", 4);
 
-//todo!
+client.sendNumber("Number-Stream", 300);
+
+client.sendGeoPoint("Geo-Stream", 45.8, -115.6);
+
+Random r = new Random();
+client.sendLeaderboard("Leader-Stream",
+        new LeaderboardEntry("Ian", r.nextInt(100)),
+        new LeaderboardEntry("Patrick", r.nextInt(100)),
+        new LeaderboardEntry("Barney", r.nextInt(100)));
+
+client.sendList("Test-Stream", "Fe", "Fi", "Fo", "Fum");
+
+client.sendText("Test-Stream", "Custom Title", "This is a new message");
 ```
 
 You can also wire up the LeftronicClient using dependency injection frameworks such as Guice. The three constructor parameters are bound to the following @Named parameter:
