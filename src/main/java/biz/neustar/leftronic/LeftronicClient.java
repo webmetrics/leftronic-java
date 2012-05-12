@@ -70,6 +70,22 @@ public class LeftronicClient {
     public void sendText(String streamName, String title, String message) throws LeftronicException, IOException {
         post(streamName, new Text(title, message));
     }
+    
+    /**
+     * Sends a "Custom Text" data point to the supplied Leftronic stream.
+     *
+     * @param streamName target widget/stream
+     * @param title the title of the text to be displayed
+     * @param message the actual message of the text to be displayed
+     * @throws IOException when there is an IO problem such as making a network request
+     * @throws LeftronicException when a non-200 HTTP response code is returned
+     */
+    public void sendText(String streamName, String title, String message, String imgUrl) throws LeftronicException, IOException {
+        Text text = new Text(title, message);
+        text.setImgUrl(imgUrl);
+    	post(streamName, text);
+    }
+    
 
     /**
      * Sends a "Custom Leaderboard" data point to the supplied Leftronic stream.
